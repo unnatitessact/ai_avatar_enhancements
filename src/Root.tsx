@@ -16,6 +16,18 @@ const defaultProps = {
   audioUrl: remotionDemoVideo.output_video_url
     ? null
     : remotionDemoVideo.audio_url,
+  centerTitleLine1: "",
+  centerTitleLine2: "",
+  heroLines: [],
+  promoCtaBackgroundColor: "#0066cc",
+  promoCtaButtonLabel: "",
+  promoCtaSubtitle: "",
+  promoCtaTitleLines: [] as string[],
+  processChecklistHeader: "OUR PROCESS",
+  processChecklistItems: [] as WordToWorkTranscriptProps["processChecklistItems"],
+  meetYourSpeakerHeader: "MEET YOUR SPEAKER",
+  speakerNameBar: "Jeremy Blank",
+  speakerDesignationBar: "Director of Global Admissions",
   kicker: "Word To Work",
   outputVideoUrl: remotionDemoVideo.output_video_url,
   speaker: "Strategy Transcript",

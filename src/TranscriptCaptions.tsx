@@ -108,7 +108,7 @@ export const TranscriptCaptions: React.FC<TranscriptCaptionsProps> = ({
   const CaptionPage = variantToPage[variant];
 
   return (
-    <AbsoluteFill style={{ pointerEvents: "none", zIndex: 2 }}>
+    <AbsoluteFill style={{ pointerEvents: "none", zIndex: 4 }}>
       {pages.map((page, index) => {
         const nextPage = pages[index + 1] ?? null;
         const startFrame = Math.floor((page.startMs / 1000) * fps);
