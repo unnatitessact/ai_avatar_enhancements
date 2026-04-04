@@ -1,1 +1,7 @@
 @import "tailwindcss";
+
+.remotion-bg-video {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}

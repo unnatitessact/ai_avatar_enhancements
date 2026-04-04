@@ -6,11 +6,12 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
+    "@remotion/captions": "^4.0.443",
     "@remotion/cli": "4.0.443",
+    "@remotion/tailwind-v4": "4.0.443",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "remotion": "4.0.443",
-    "@remotion/tailwind-v4": "4.0.443",
     "tailwindcss": "4.0.0"
   },
   "devDependencies": {
