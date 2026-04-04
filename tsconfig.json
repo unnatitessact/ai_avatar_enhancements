@@ -5,11 +5,13 @@
     "jsx": "react-jsx",
     "strict": true,
     "noEmit": true,
+    "resolveJsonModule": true,
+    "moduleResolution": "node",
     "lib": ["es2015"],
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "noUnusedLocals": true
   },
-  "exclude": ["remotion.config.ts"]
+  "exclude": ["remotion.config.ts", "scripts"]
 }

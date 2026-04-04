@@ -1,14 +1,14 @@
 import { AbsoluteFill, Audio, Video } from "remotion";
-import { CenterTitleWithUnderline } from "./CenterTitleWithUnderline";
-import { FloatingPromoCta } from "./FloatingPromoCta";
-import { HeroTitleLines } from "./HeroTitleLines";
-import { ProcessChecklist } from "./ProcessChecklist";
-import type { ProcessChecklistItem } from "./ProcessChecklist";
-import { SpeakerNameBars } from "./SpeakerNameBars";
+import { CenterTitleWithUnderline } from "./overlays/CenterTitleWithUnderline";
+import { FloatingPromoCta } from "./overlays/FloatingPromoCta";
+import { HeroTitleLines } from "./overlays/HeroTitleLines";
+import { ProcessChecklist } from "./overlays/ProcessChecklist";
+import type { ProcessChecklistItem } from "./overlays/ProcessChecklist";
+import { SpeakerNameBars } from "./overlays/SpeakerNameBars";
 import { TranscriptCaptions } from "./TranscriptCaptions";
 import type { TranscriptVariant } from "./transcriptTypes";
 
-export type { ProcessChecklistItem } from "./ProcessChecklist";
+export type { ProcessChecklistItem } from "./overlays/ProcessChecklist";
 export type { TranscriptVariant } from "./transcriptTypes";
 
 const FONT_FAMILY = "'Avenir Next', 'Trebuchet MS', sans-serif";

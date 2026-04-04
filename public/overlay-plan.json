@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "1",
+  "totalDurationMs": 18460,
+  "rationale": "Provide this JSON from your own pipeline; see src/overlays/registry.json for overlay ids and props.",
+  "captions": {
+    "enabled": true,
+    "variant": "minimal"
+  },
+  "segments": [
+    {
+      "id": "seg-hero-1",
+      "overlayId": "hero_title_lines",
+      "startMs": 0,
+      "endMs": 4500,
+      "props": {
+        "heroLines": [
+          "More Than a Sport",
+          "A Global Passion",
+          "Together Through Cricket"
+        ]
+      }
+    },
+    {
+      "id": "seg-center-1",
+      "overlayId": "center_title_with_underline",
+      "startMs": 4500,
+      "endMs": 9500,
+      "props": {
+        "centerTitleLine1": "Every match tells",
+        "centerTitleLine2": "a story"
+      }
+    },
+    {
+      "id": "seg-speaker-1",
+      "overlayId": "speaker_name_bars",
+      "startMs": 7500,
+      "endMs": 13000,
+      "props": {
+        "meetYourSpeakerHeader": "MEET YOUR SPEAKER",
+        "speakerNameBar": "Alex Morgan",
+        "speakerDesignationBar": "Sports Narrator"
+      }
+    }
+  ]
+}
