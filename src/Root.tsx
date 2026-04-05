@@ -64,8 +64,8 @@ export const RemotionRoot: React.FC = () => {
         component={WordToWorkTranscript}
         defaultProps={defaultProps}
         fps={FPS}
-        width={1280}
-        height={720}
+        width={1080}
+        height={1920}
         durationInFrames={600}
         calculateMetadata={async ({ props }) => {
           const src = props.transcriptSource.trim();

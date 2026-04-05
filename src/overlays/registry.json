@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "description": "Maps stable overlay ids to Remotion components and WordToWorkTranscript props. External planners should use these ids and resolve props to the listed composition keys.",
+  "description": "Maps stable overlay ids to Remotion components and WordToWorkTranscript props. Each overlay includes `componentProps`: React prop names, types, defaults, and `compositionPropKey` where the composition/plan uses a different field name than the component.",
   "exclusivityGroups": [
     {
       "id": "full_screen_takeover",
@@ -23,54 +23,52 @@
       "id": "hero_title_lines",
       "component": "HeroTitleLines",
       "compositionProps": ["heroLines"],
-      "purpose": "Elegant centered stack of italic serif topic lines (e.g. three themes).",
-      "region": "center",
-      "obscuresSubject": "high",
-      "slots": [
+      "componentProps": [
         {
-          "key": "heroLines",
+          "name": "lines",
+          "compositionPropKey": "heroLines",
           "type": "string[]",
           "required": true,
-          "notes": "One string per line, top to bottom. Empty array hides the overlay."
+          "default": null,
+          "description": "Main stacked titles, top to bottom."
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "required": false,
+          "default": 20,
+          "description": "Vertical space between lines in pixels."
         }
       ],
-      "whenToUse": [
-        "Topic or chapter titles during A-roll or calm B-roll.",
-        "Short phrases (roughly 3–6 words per line)."
-      ],
-      "whenToAvoid": [
-        "Busy B-roll where text competes with the shot.",
-        "Heavy caption density at the same time."
-      ]
+      "purpose": "Elegant centered stack of italic serif topic lines (e.g. three themes).",
+      "region": "center"    
+     
     },
     {
       "id": "center_title_with_underline",
       "component": "CenterTitleWithUnderline",
       "compositionProps": ["centerTitleLine1", "centerTitleLine2"],
-      "purpose": "Two-line bold headline with a colored accent bar under the second line.",
-      "region": "center",
-      "obscuresSubject": "high",
-      "slots": [
+      "componentProps": [
         {
-          "key": "centerTitleLine1",
+          "name": "line1",
+          "compositionPropKey": "centerTitleLine1",
           "type": "string",
           "required": false,
-          "notes": "First line; often a lead-in."
+          "default": "",
+          "description": "First headline line."
         },
         {
-          "key": "centerTitleLine2",
+          "name": "line2",
+          "compositionPropKey": "centerTitleLine2",
           "type": "string",
           "required": false,
-          "notes": "Second line; underline sits under this line. Both empty hides overlay."
+          "default": "",
+          "description": "Second line; accent bar sits under this line."
         }
+        
       ],
-      "whenToUse": [
-        "Hook or question-style titles (e.g. line 1 + line 2 payoff).",
-        "Short campaign-style headlines."
-      ],
-      "whenToAvoid": [
-        "Long sentences; prefer two short lines."
-      ]
+      "purpose": "Two-line bold headline with a colored accent bar under the second line."
+     
     },
     {
       "id": "floating_promo_cta",
@@ -81,74 +79,91 @@
         "promoCtaButtonLabel",
         "promoCtaBackgroundColor"
       ],
-      "purpose": "Full-frame solid-color promo: uppercase headline lines, optional subtitle, optional pill button; headline animates from top, button from bottom.",
-      "region": "full_frame",
-      "obscuresSubject": "full",
-      "slots": [
+      "componentProps": [
         {
-          "key": "promoCtaTitleLines",
+          "name": "titleLines",
+          "compositionPropKey": "promoCtaTitleLines",
           "type": "string[]",
           "required": false,
-          "notes": "Uppercase display; typically 2–4 short lines. Empty allowed if other fields carry the message."
+          "default": [],
+          "description": "Headline lines (rendered uppercase)."
         },
         {
-          "key": "promoCtaSubtitle",
+          "name": "subtitle",
+          "compositionPropKey": "promoCtaSubtitle",
           "type": "string",
           "required": false,
-          "notes": "Sentence case subtitle below headline."
+          "default": "",
+          "description": "Line below the headline."
         },
         {
-          "key": "promoCtaButtonLabel",
+          "name": "buttonLabel",
+          "compositionPropKey": "promoCtaButtonLabel",
           "type": "string",
           "required": false,
-          "notes": "Pill CTA text (e.g. URL). Empty hides button."
+          "default": "",
+          "description": "Pill CTA text; empty hides the button."
         },
         {
-          "key": "promoCtaBackgroundColor",
+          "name": "backgroundColor",
+          "compositionPropKey": "promoCtaBackgroundColor",
           "type": "string",
           "required": false,
-          "notes": "CSS color, e.g. #0066cc. Drives button text color for contrast."
+          "default": "#0066cc",
+          "description": "Full-frame background; also used for button text color."
+        },
+        {
+          "name": "startDelayFrames",
+          "type": "number",
+          "required": false,
+          "default": 0,
+          "description": "Frames before the first headline line animates."
+        },
+        {
+          "name": "staggerFrames",
+          "type": "number",
+          "required": false,
+          "default": 6,
+          "description": "Stagger between headline lines and subtitle timing."
         }
       ],
-      "whenToUse": [
-        "Dedicated CTA or offer beats.",
-        "Book / register / visit URL moments."
-      ],
-      "whenToAvoid": [
-        "Talking-head emphasis when the face must stay visible.",
-        "Overlapping with process_checklist full panel."
-      ]
+      "purpose": "Full-frame solid-color promo: uppercase headline lines, optional subtitle, optional pill button; headline animates from top, button from bottom.",
+      "region": "full_frame",
+      "obscuresSubject": "full"
     },
     {
       "id": "process_checklist",
       "component": "ProcessChecklist",
       "compositionProps": ["processChecklistHeader", "processChecklistItems"],
+      "componentProps": [
+        {
+          "name": "header",
+          "compositionPropKey": "processChecklistHeader",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "description": "Small caps section title (e.g. OUR PROCESS)."
+        },
+        {
+          "name": "items",
+          "compositionPropKey": "processChecklistItems",
+          "type": "Array<{ label: string; icon: ProcessChecklistIconId }>",
+          "required": true,
+          "default": [],
+          "description": "Rows with label and icon id."
+        },
+        {
+          "name": "backgroundColor",
+          "type": "string",
+          "required": false,
+          "default": "#0b1f3a",
+          "description": "Solid panel background behind content."
+        }
+      ],
       "purpose": "Left-aligned timeline: header, vertical line animation, stepped rows with icons and labels.",
       "region": "full_frame",
       "obscuresSubject": "full",
-      "slots": [
-        {
-          "key": "processChecklistHeader",
-          "type": "string",
-          "required": false,
-          "notes": "Small caps header (e.g. OUR PROCESS). Empty still allows items if items present."
-        },
-        {
-          "key": "processChecklistItems",
-          "type": "Array<{ label: string; icon: ProcessChecklistIconId }>",
-          "required": true,
-          "notes": "Empty array hides overlay. icon ∈ graduation | clipboard | edit | envelope."
-        }
-      ],
-      "iconIds": ["graduation", "clipboard", "edit", "envelope"],
-      "whenToUse": [
-        "Explaining steps, services, or journey phases.",
-        "When transcript lists sequential benefits or stages."
-      ],
-      "whenToAvoid": [
-        "Non-list content; use hero or center title instead.",
-        "Same beat as floating_promo_cta (pick one)."
-      ]
+      "iconIds": ["graduation", "clipboard", "edit", "envelope"]
     },
     {
       "id": "speaker_name_bars",
@@ -158,72 +173,83 @@
         "speakerNameBar",
         "speakerDesignationBar"
       ],
-      "purpose": "Optional top ‘meet your speaker’ label; two white lower-left bars for name and designation with slide-in from left.",
-      "region": "lower_left",
-      "obscuresSubject": "low",
-      "slots": [
+      "componentProps": [
         {
-          "key": "meetYourSpeakerHeader",
+          "name": "meetHeader",
+          "compositionPropKey": "meetYourSpeakerHeader",
           "type": "string",
           "required": false,
-          "notes": "Top center, uppercase. Empty hides."
+          "default": "",
+          "description": "Top-centered uppercase label; empty hides."
         },
         {
-          "key": "speakerNameBar",
+          "name": "speakerName",
+          "compositionPropKey": "speakerNameBar",
           "type": "string",
           "required": false,
-          "notes": "Primary white bar — speaker name."
+          "default": "",
+          "description": "Primary white bar — name."
         },
         {
-          "key": "speakerDesignationBar",
+          "name": "speakerDesignation",
+          "compositionPropKey": "speakerDesignationBar",
           "type": "string",
           "required": false,
-          "notes": "Secondary white bar — title or role. Animates after name."
+          "default": "",
+          "description": "Secondary white bar — role; animates after name."
+        },
+        {
+          "name": "startDelayFrames",
+          "type": "number",
+          "required": false,
+          "default": 0,
+          "description": "Extra frames before the name bar slides in."
         }
       ],
-      "whenToUse": [
-        "Introduction or re-introduction of the speaker.",
-        "Interview or webinar style segments."
-      ],
-      "whenToAvoid": [
-        "When lower third would clash with dense bottom captions (adjust caption variant or timing)."
-      ]
+      "purpose": "Optional top ‘meet your speaker’ label; two white lower-left bars for name and designation with slide-in from left.",
+      "region": "lower_left",
+      "obscuresSubject": "low"
     },
     {
       "id": "transcript_captions",
       "component": "TranscriptCaptions",
       "compositionProps": ["transcriptSource", "transcriptVariant", "accentColor"],
-      "purpose": "Word- or page-aligned captions driven by alignment JSON (not designed marketing text).",
-      "region": "bottom",
-      "obscuresSubject": "low",
-      "slots": [
+      "componentProps": [
         {
-          "key": "transcriptSource",
+          "name": "accentColor",
+          "compositionPropKey": "accentColor",
           "type": "string",
           "required": true,
-          "notes": "URL or public path to word-level alignment JSON."
+          "default": null,
+          "description": "Highlight color for active word / karaoke styles."
         },
         {
-          "key": "transcriptVariant",
-          "type": "tiktok | karaoke | lowerThird | minimal",
-          "required": true,
-          "notes": "Visual style of captions."
+          "name": "combineTokensWithinMilliseconds",
+          "type": "number",
+          "required": false,
+          "default": 1300,
+          "description": "Window to merge words into one caption page."
         },
         {
-          "key": "accentColor",
+          "name": "transcriptSource",
+          "compositionPropKey": "transcriptSource",
           "type": "string",
           "required": true,
-          "notes": "Highlight / accent for active word styles."
+          "default": null,
+          "description": "URL or public path to word-level alignment JSON. On PlanComposition the same value is supplied via the prop `wordLevelTranscriptSource`."
+        },
+        {
+          "name": "variant",
+          "compositionPropKey": "transcriptVariant",
+          "type": "TranscriptVariant",
+          "required": true,
+          "default": "minimal",
+          "description": "One of: tiktok | karaoke | lowerThird | minimal."
         }
       ],
-      "whenToUse": [
-        "Default accessibility and karaoke sync to speech.",
-        "Whenever alignment exists for the segment."
-      ],
-      "whenToAvoid": [
-        "Beats where storyboard explicitly disables captions.",
-        "Full-screen promo if captions clutter the brief (toggle per segment)."
-      ]
+      "purpose": "Word- or page-aligned captions driven by alignment JSON (not designed marketing text).",
+      "region": "bottom",
+      "obscuresSubject": "low"
     }
   ]
 }
