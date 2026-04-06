@@ -1,0 +1,86 @@
+{
+  "enhancements": [
+    {
+      "enhancementId": "TitleCard",
+      "description": "Full-frame centered card with a headline and optional supporting line over a dimmed backdrop.",
+      "whenToUse": "Use when introducing a segment, chapter, or the overall topic of the video.",
+      "props": [
+        {
+          "type": "string",
+          "name": "title",
+          "description": "Primary headline shown on the card.",
+          "required": true
+        },
+        {
+          "type": "string",
+          "name": "subtitle",
+          "description": "Secondary line below the title for context or a short tagline.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "enhancementId": "LowerThird",
+      "description": "Broadcast-style lower third: name and optional role or label anchored toward the bottom of the frame.",
+      "whenToUse": "Use when identifying a speaker, guest, place, or on-screen subject.",
+      "props": [
+        {
+          "type": "string",
+          "name": "headline",
+          "description": "Main line (for example a person’s name or primary label).",
+          "required": true
+        },
+        {
+          "type": "string",
+          "name": "subline",
+          "description": "Smaller uppercase line such as title, organization, or location.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "enhancementId": "BannerStrip",
+      "description": "Full-width horizontal banner with a main message and optional small label; can be pinned to the top or bottom edge.",
+      "whenToUse": "Use for announcements, CTAs, episode labels, or short updates that should read like a news ticker or promo strip.",
+      "props": [
+        {
+          "type": "string",
+          "name": "text",
+          "description": "Main banner copy.",
+          "required": true
+        },
+        {
+          "type": "string",
+          "name": "label",
+          "description": "Small uppercase kicker above the main text (for example “Update” or “New”).",
+          "required": false
+        },
+        {
+          "type": "string",
+          "name": "position",
+          "description": "Edge to attach the strip: \"top\" or \"bottom\". Omit or use \"bottom\" for the default bottom placement.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "enhancementId": "QuoteOverlay",
+      "description": "Quote-focused overlay with large decorative quotation styling and optional attribution.",
+      "whenToUse": "Use when highlighting a testimonial, memorable line, or cited speaker.",
+      "props": [
+        {
+          "type": "string",
+          "name": "quote",
+          "description": "The quoted text to display.",
+          "required": true
+        },
+        {
+          "type": "string",
+          "name": "attribution",
+          "description": "Who said it (name, role, or source line).",
+          "required": false
+        }
+      ]
+    }
+  ]
+}
