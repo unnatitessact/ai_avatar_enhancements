@@ -1,8 +1,10 @@
 import { Composition, Folder } from "remotion";
 import {
   BannerStripPreview,
+  BookingCtaPreview,
   HeadlineFadePreview,
   LowerThirdPreview,
+  ProcessChecklistPreview,
   QuoteOverlayPreview,
   TitleCardPreview,
   StackedTextOverlayPreview,
@@ -80,6 +82,20 @@ export const RemotionRoot: React.FC = () => {
         <Composition
           id="PreviewHeadlineFade"
           component={HeadlineFadePreview}
+          durationInFrames={previewDurationInFrames}
+          fps={previewFps}
+          {...previewSize}
+        />
+        <Composition
+          id="PreviewProcessChecklist"
+          component={ProcessChecklistPreview}
+          durationInFrames={previewDurationInFrames}
+          fps={previewFps}
+          {...previewSize}
+        />
+        <Composition
+          id="PreviewBookingCta"
+          component={BookingCtaPreview}
           durationInFrames={previewDurationInFrames}
           fps={previewFps}
           {...previewSize}

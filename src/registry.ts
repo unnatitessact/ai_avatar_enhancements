@@ -4,6 +4,14 @@ import { LowerThird } from "./enhancements/LowerThird";
 import { QuoteOverlay } from "./enhancements/QuoteOverlay";
 import { TitleCard } from "./enhancements/TitleCard";
 import { HeadlineFade } from "./enhancements/HeadlineFade";
+import {
+  parseBookingCtaHeadlineProps,
+  BookingCta,
+} from "./enhancements/BookingCta";
+import {
+  parseProcessChecklistItems,
+  ProcessChecklist,
+} from "./enhancements/ProcessChecklist";
 import { StackedTextOverlay } from "./enhancements/StackedTextOverlay";
 
 /** Maps `enhancementId` → component, with JSON `props` normalized per enhancement. */
@@ -69,6 +77,39 @@ export const enhancementRegistry: Record<string, EnhancementRenderer> = {
         props.accentColor !== undefined ? String(props.accentColor) : undefined,
       fadeInFrames:
         typeof props.fadeInFrames === "number" ? props.fadeInFrames : undefined,
+    }),
+  ProcessChecklist: (props) =>
+    createElement(ProcessChecklist, {
+      title: props.title !== undefined ? String(props.title) : undefined,
+      items: parseProcessChecklistItems(props.items),
+      staggerFrames:
+        typeof props.staggerFrames === "number"
+          ? props.staggerFrames
+          : undefined,
+      fadeFrames:
+        typeof props.fadeFrames === "number" ? props.fadeFrames : undefined,
+    }),
+  BookingCta: (props) =>
+    createElement(BookingCta, {
+      headlineLines: parseBookingCtaHeadlineProps(props),
+      subtitle:
+        props.subtitle !== undefined ? String(props.subtitle) : undefined,
+      ctaText:
+        props.ctaText !== undefined
+          ? String(props.ctaText)
+          : props.ctaLabel !== undefined
+            ? String(props.ctaLabel)
+            : undefined,
+      backgroundColor:
+        props.backgroundColor !== undefined
+          ? String(props.backgroundColor)
+          : undefined,
+      staggerFrames:
+        typeof props.staggerFrames === "number"
+          ? props.staggerFrames
+          : undefined,
+      fadeFrames:
+        typeof props.fadeFrames === "number" ? props.fadeFrames : undefined,
     }),
 };
 

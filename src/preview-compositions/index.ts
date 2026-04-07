@@ -1,5 +1,7 @@
 export { BannerStripPreview } from "./BannerStripPreview";
+export { BookingCtaPreview } from "./BookingCtaPreview";
 export { HeadlineFadePreview } from "./HeadlineFadePreview";
+export { ProcessChecklistPreview } from "./ProcessChecklistPreview";
 export { LowerThirdPreview } from "./LowerThirdPreview";
 export { PreviewBackground } from "./PreviewBackground";
 export { QuoteOverlayPreview } from "./QuoteOverlayPreview";
