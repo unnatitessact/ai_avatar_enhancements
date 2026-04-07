@@ -3,6 +3,8 @@ import { BannerStrip } from "./enhancements/BannerStrip";
 import { LowerThird } from "./enhancements/LowerThird";
 import { QuoteOverlay } from "./enhancements/QuoteOverlay";
 import { TitleCard } from "./enhancements/TitleCard";
+import { HeadlineFade } from "./enhancements/HeadlineFade";
+import { StackedTextOverlay } from "./enhancements/StackedTextOverlay";
 
 /** Maps `enhancementId` → component, with JSON `props` normalized per enhancement. */
 export type EnhancementRenderer = (
@@ -40,6 +42,33 @@ export const enhancementRegistry: Record<string, EnhancementRenderer> = {
         props.attribution !== undefined
           ? String(props.attribution)
           : undefined,
+    }),
+  StackedTextOverlay: (props) => {
+    const fromArray = Array.isArray(props.lines)
+      ? props.lines.map((l) => String(l ?? ""))
+      : null;
+    const lines =
+      fromArray ??
+      [props.line1, props.line2, props.line3, props.line4, props.line5]
+        .filter((k) => k !== undefined)
+        .map((l) => String(l ?? ""));
+    const staggerFrames =
+      typeof props.staggerFrames === "number" ? props.staggerFrames : undefined;
+    const fadeFrames =
+      typeof props.fadeFrames === "number" ? props.fadeFrames : undefined;
+    return createElement(StackedTextOverlay, {
+      lines,
+      staggerFrames,
+      fadeFrames,
+    });
+  },
+  HeadlineFade: (props) =>
+    createElement(HeadlineFade, {
+      title: String(props.title ?? ""),
+      accentColor:
+        props.accentColor !== undefined ? String(props.accentColor) : undefined,
+      fadeInFrames:
+        typeof props.fadeInFrames === "number" ? props.fadeInFrames : undefined,
     }),
 };
 
