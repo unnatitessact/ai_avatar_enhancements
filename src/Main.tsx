@@ -2,6 +2,8 @@ import { AbsoluteFill, Sequence, useVideoConfig } from "remotion";
 import { Video } from "@remotion/media";
 import { renderEnhancement } from "./registry";
 import type { Enhancement } from "./types/enhancements";
+import { WordLevelTranscript } from "./enhancements/WordLevelTranscript";
+import sampleTranscript from "../sample_word_level_transcript.json";
 
 export type MainCompositionProps = {
   videoUrl: string;
@@ -44,6 +46,7 @@ export const MainComposition: React.FC<MainCompositionProps> = ({
         objectFit="cover"
         style={{ width: "100%", height: "100%" }}
       />
+     
       {enhancements.map((enhancement, index) => {
         const timing = enhancementToSequenceTiming(enhancement, fps);
         if (!timing) {
@@ -61,6 +64,14 @@ export const MainComposition: React.FC<MainCompositionProps> = ({
           </Sequence>
         );
       })}
+
+     <WordLevelTranscript
+        transcript={sampleTranscript}
+        accentColor="#facc15"
+        textColor="#ffffff"
+        inactiveTextColor="rgba(255,255,255,0.72)"
+        position="bottom"
+      />
     </AbsoluteFill>
   );
 };

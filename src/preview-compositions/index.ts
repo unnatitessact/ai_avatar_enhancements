@@ -7,3 +7,4 @@ export { PreviewBackground } from "./PreviewBackground";
 export { QuoteOverlayPreview } from "./QuoteOverlayPreview";
 export { TitleCardPreview } from "./TitleCardPreview";
 export { StackedTextOverlayPreview } from "./StackedTextOverlayPreview";
+export { WordLevelTranscriptPreview } from "./WordLevelTranscriptPreview";

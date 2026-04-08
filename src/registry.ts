@@ -13,6 +13,7 @@ import {
   ProcessChecklist,
 } from "./enhancements/ProcessChecklist";
 import { StackedTextOverlay } from "./enhancements/StackedTextOverlay";
+import { WordLevelTranscript } from "./enhancements/WordLevelTranscript";
 
 /** Maps `enhancementId` → component, with JSON `props` normalized per enhancement. */
 export type EnhancementRenderer = (
@@ -110,6 +111,35 @@ export const enhancementRegistry: Record<string, EnhancementRenderer> = {
           : undefined,
       fadeFrames:
         typeof props.fadeFrames === "number" ? props.fadeFrames : undefined,
+    }),
+  WordLevelTranscript: (props) =>
+    createElement(WordLevelTranscript, {
+      transcript:
+        props.transcript ??
+        props.wordLevelTranscript ??
+        ("word_level_transcript" in props ? props : undefined),
+      combineTokensWithinMilliseconds:
+        typeof props.combineTokensWithinMilliseconds === "number"
+          ? props.combineTokensWithinMilliseconds
+          : undefined,
+      timeOffsetSeconds:
+        typeof props.timeOffsetSeconds === "number"
+          ? props.timeOffsetSeconds
+          : undefined,
+      accentColor:
+        props.accentColor !== undefined ? String(props.accentColor) : undefined,
+      textColor:
+        props.textColor !== undefined ? String(props.textColor) : undefined,
+      inactiveTextColor:
+        props.inactiveTextColor !== undefined
+          ? String(props.inactiveTextColor)
+          : undefined,
+      position:
+        props.position === "center"
+          ? "center"
+          : props.position === "bottom"
+            ? "bottom"
+            : undefined,
     }),
 };
 

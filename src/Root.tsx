@@ -8,6 +8,7 @@ import {
   QuoteOverlayPreview,
   TitleCardPreview,
   StackedTextOverlayPreview,
+  WordLevelTranscriptPreview,
 } from "./preview-compositions";
 import { MainComposition, type MainCompositionProps } from "./Main";
 
@@ -96,6 +97,13 @@ export const RemotionRoot: React.FC = () => {
         <Composition
           id="PreviewBookingCta"
           component={BookingCtaPreview}
+          durationInFrames={previewDurationInFrames}
+          fps={previewFps}
+          {...previewSize}
+        />
+        <Composition
+          id="PreviewWordLevelTranscript"
+          component={WordLevelTranscriptPreview}
           durationInFrames={previewDurationInFrames}
           fps={previewFps}
           {...previewSize}

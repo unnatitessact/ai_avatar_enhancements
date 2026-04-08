@@ -81,6 +81,43 @@
           "required": false
         }
       ]
+    },
+    {
+      "enhancementId": "WordLevelTranscript",
+      "description": "Caption overlay built from word-level transcript JSON with active-word highlighting and readable grouped pages.",
+      "whenToUse": "Use when you want subtitles that stay tightly synced to speech and visually emphasize the currently spoken word.",
+      "props": [
+        {
+          "type": "object",
+          "name": "transcript",
+          "description": "Word-level transcript JSON. Accepts either an array of tokens or an object with `word_level_transcript`.",
+          "required": true
+        },
+        {
+          "type": "number",
+          "name": "combineTokensWithinMilliseconds",
+          "description": "Grouping window for each caption page. Lower values create more word-by-word caption changes.",
+          "required": false
+        },
+        {
+          "type": "number",
+          "name": "timeOffsetSeconds",
+          "description": "Shift transcript timings when the transcript is absolute to the full video but the enhancement starts later.",
+          "required": false
+        },
+        {
+          "type": "string",
+          "name": "accentColor",
+          "description": "Highlight color for the active spoken word.",
+          "required": false
+        },
+        {
+          "type": "string",
+          "name": "position",
+          "description": "Caption block position: `bottom` or `center`.",
+          "required": false
+        }
+      ]
     }
   ]
 }
