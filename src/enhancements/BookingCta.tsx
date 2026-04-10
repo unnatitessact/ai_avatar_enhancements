@@ -71,9 +71,9 @@ export const BookingCta: FC<BookingCtaProps> = ({
 
   const padX = Math.round(Math.max(36, width * 0.065));
   const padY = Math.round(Math.max(44, height * 0.055));
-  const headlineSize = Math.round(Math.max(36, Math.min(58, width * 0.048)));
-  const subtitleSize = Math.round(Math.max(22, Math.min(34, width * 0.028)));
-  const ctaSize = Math.round(Math.max(20, Math.min(30, width * 0.024)));
+  const headlineSize = Math.round(Math.max(44, Math.min(70, width * 0.058)));
+  const subtitleSize = Math.round(Math.max(26, Math.min(40, width * 0.034)));
+  const ctaSize = Math.round(Math.max(24, Math.min(36, width * 0.029)));
   const lineGap = Math.round(headlineSize * 0.14);
   const afterHeadlineGap = Math.round(headlineSize * 0.55);
   const beforeCtaGap = Math.round(subtitleSize * 1.15);

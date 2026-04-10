@@ -25,7 +25,7 @@ export const QuoteOverlay: FC<QuoteOverlayProps> = ({
   const { width } = useVideoConfig();
 
   const pad = Math.round(Math.max(32, width * 0.045));
-  const quoteSize = Math.round(Math.max(26, Math.min(52, width * 0.038)));
+  const quoteSize = Math.round(Math.max(32, Math.min(62, width * 0.046)));
   const attrSize = Math.round(quoteSize * 0.42);
 
   const introEnd = 20;

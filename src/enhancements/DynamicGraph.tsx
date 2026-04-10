@@ -37,8 +37,8 @@ export const DynamicGraph: FC<DynamicGraphProps> = ({
   const { width, height } = useVideoConfig();
 
   const edge = Math.round(Math.max(24, width * 0.045));
-  const titleSize = Math.round(Math.max(22, Math.min(36, width * 0.032)));
-  const labelSize = Math.round(Math.max(14, width * 0.022));
+  const titleSize = Math.round(Math.max(26, Math.min(44, width * 0.039)));
+  const labelSize = Math.round(Math.max(17, width * 0.027));
 
   const cardW = width - 2 * edge;
   const cardH = height - 2 * edge;

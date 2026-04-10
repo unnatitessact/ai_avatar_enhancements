@@ -17,6 +17,12 @@ import { StackedTextOverlay } from "./enhancements/StackedTextOverlay";
 import { WordLevelTranscript } from "./enhancements/WordLevelTranscript";
 import { DynamicGraph } from "./enhancements/DynamicGraph";
 import {
+  ComparisonSplit,
+  DEFAULT_LEFT_POINTS,
+  DEFAULT_RIGHT_POINTS,
+  parseComparisonPointList,
+} from "./enhancements/ComparisonSplit";
+import {
   ComparisonStepColumn,
   parseComparisonStepColumnItems,
 } from "./enhancements/ComparisonStepColumn";
@@ -151,6 +157,52 @@ export const enhancementRegistry: Record<string, EnhancementRenderer> = {
       fadeFrames:
         typeof props.fadeFrames === "number" ? props.fadeFrames : undefined,
     }),
+  ComparisonSplit: (props) => {
+    const l = parseComparisonPointList(props.leftPoints ?? props.left);
+    const r = parseComparisonPointList(props.rightPoints ?? props.right);
+    let left = l;
+    let right = r;
+    if (left.length === 0 && right.length === 0) {
+      left = DEFAULT_LEFT_POINTS;
+      right = DEFAULT_RIGHT_POINTS;
+    }
+    return createElement(ComparisonSplit, {
+      leftTitle:
+        props.leftTitle !== undefined ? String(props.leftTitle) : undefined,
+      rightTitle:
+        props.rightTitle !== undefined ? String(props.rightTitle) : undefined,
+      leftPoints: left,
+      rightPoints: right,
+      dividerFrames:
+        typeof props.dividerFrames === "number"
+          ? props.dividerFrames
+          : undefined,
+      staggerFrames:
+        typeof props.staggerFrames === "number"
+          ? props.staggerFrames
+          : undefined,
+      fadeFrames:
+        typeof props.fadeFrames === "number" ? props.fadeFrames : undefined,
+      backgroundColor:
+        props.backgroundColor !== undefined
+          ? String(props.backgroundColor)
+          : undefined,
+      dividerColor:
+        props.dividerColor !== undefined
+          ? String(props.dividerColor)
+          : undefined,
+      leftAccentColor:
+        props.leftAccentColor !== undefined
+          ? String(props.leftAccentColor)
+          : undefined,
+      rightAccentColor:
+        props.rightAccentColor !== undefined
+          ? String(props.rightAccentColor)
+          : undefined,
+      textColor:
+        props.textColor !== undefined ? String(props.textColor) : undefined,
+    });
+  },
   ComparisonStepColumn: (props) =>
     createElement(ComparisonStepColumn, {
       items: parseComparisonStepColumnItems(props.items),

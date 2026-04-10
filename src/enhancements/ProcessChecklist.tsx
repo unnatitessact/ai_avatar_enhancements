@@ -148,8 +148,8 @@ export const ProcessChecklist: FC<ProcessChecklistProps> = ({
 
   const padX = Math.round(Math.max(40, width * 0.07));
   const padY = Math.round(Math.max(48, height * 0.06));
-  const titleSize = Math.round(Math.max(28, Math.min(40, width * 0.036)));
-  const labelSize = Math.round(Math.max(30, Math.min(46, width * 0.042)));
+  const titleSize = Math.round(Math.max(34, Math.min(48, width * 0.043)));
+  const labelSize = Math.round(Math.max(36, Math.min(56, width * 0.05)));
   const iconBox = Math.round(Math.max(54, width * 0.062));
   const iconSvg = Math.round(iconBox * 0.48);
   const rowGap = Math.round(labelSize * 0.78);

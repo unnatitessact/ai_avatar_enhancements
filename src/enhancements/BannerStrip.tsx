@@ -26,8 +26,8 @@ export const BannerStrip: FC<BannerStripProps> = ({
 
   const padY = Math.round(Math.max(14, width * 0.018));
   const padX = Math.round(Math.max(20, width * 0.04));
-  const labelSize = Math.round(Math.max(11, width * 0.018));
-  const textSize = Math.round(Math.max(22, Math.min(40, width * 0.034)));
+  const labelSize = Math.round(Math.max(14, width * 0.022));
+  const textSize = Math.round(Math.max(26, Math.min(48, width * 0.041)));
 
   const introEnd = 14;
   const opacity = interpolate(frame, [0, introEnd], [0, 1], {

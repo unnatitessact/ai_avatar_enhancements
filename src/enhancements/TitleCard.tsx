@@ -19,7 +19,7 @@ export const TitleCard: FC<TitleCardProps> = ({ title, subtitle }) => {
   const { width } = useVideoConfig();
 
   const pad = Math.round(Math.max(28, width * 0.04));
-  const titleSize = Math.round(Math.max(28, Math.min(64, width * 0.045)));
+  const titleSize = Math.round(Math.max(34, Math.min(76, width * 0.054)));
   const subtitleSize = Math.round(titleSize * 0.42);
 
   const introEnd = 18;

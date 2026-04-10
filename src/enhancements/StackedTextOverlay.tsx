@@ -31,7 +31,7 @@ export const StackedTextOverlay: FC<StackedTextOverlayProps> = ({
   const visibleLines = lines.map((l) => String(l)).filter((l) => l.length > 0);
 
   const pad = Math.round(Math.max(32, width * 0.055));
-  const line1Size = Math.round(Math.max(32, Math.min(56, width * 0.05)));
+  const line1Size = Math.round(Math.max(38, Math.min(66, width * 0.06)));
   const restSize = Math.round(line1Size * 0.88);
   const lineGap = Math.round(line1Size * 0.38);
 

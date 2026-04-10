@@ -91,8 +91,8 @@ export const ComparisonStepColumn: FC<ComparisonStepColumnProps> = ({
 
   const padX = Math.round(Math.max(32, width * 0.06));
   const padY = Math.round(Math.max(40, height * 0.05));
-  const titleSize = Math.round(Math.max(28, Math.min(52, width * 0.044)));
-  const subtitleSize = Math.round(Math.max(17, titleSize * 0.58));
+  const titleSize = Math.round(Math.max(34, Math.min(62, width * 0.053)));
+  const subtitleSize = Math.round(Math.max(20, titleSize * 0.58));
   const rowGap = Math.round(Math.max(64, titleSize * 0.78));
   const boxPadX = Math.round(Math.max(32, width * 0.055));
   const boxPadY = Math.round(Math.max(22, titleSize * 0.68));

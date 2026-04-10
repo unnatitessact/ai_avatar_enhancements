@@ -169,7 +169,7 @@ const TranscriptPage: FC<{
     extrapolateRight: "clamp",
   });
 
-  const fontSize = Math.round(Math.max(36, Math.min(72, width * 0.056)));
+  const fontSize = Math.round(Math.max(44, Math.min(86, width * 0.067)));
   const lineHeight = 1.18;
 
   return (

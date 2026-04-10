@@ -34,7 +34,7 @@ export const HeadlineFade: FC<HeadlineFadeProps> = ({
 
   const padX = Math.round(Math.max(24, width * 0.06));
   const padY = Math.round(Math.max(28, height * 0.06));
-  const titleSize = Math.round(Math.max(80, Math.min(44, width * 0.038)));
+  const titleSize = Math.round(Math.max(52, Math.min(96, width * 0.048)));
   const ruleWidth = Math.round(Math.min(320, width * 0.42));
   const ruleGap = Math.round(titleSize * 0.85);
 

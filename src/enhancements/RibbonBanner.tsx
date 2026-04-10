@@ -49,7 +49,7 @@ export const RibbonBanner: FC<RibbonBannerProps> = ({ text }) => {
 
   const padY = Math.round(Math.max(12, width * 0.014));
   const padX = Math.round(Math.max(28, width * 0.06));
-  const fontSize = Math.round(Math.max(18, Math.min(64, width * 0.048)));
+  const fontSize = Math.round(Math.max(22, Math.min(76, width * 0.057)));
   const lineThickness = Math.max(1, Math.round(width * 0.001));
 
   return (

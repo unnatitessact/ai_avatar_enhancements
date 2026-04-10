@@ -11,6 +11,7 @@ import {
   StackedTextOverlayPreview,
   WordLevelTranscriptPreview,
   DynamicGraphPreview,
+  ComparisonSplitPreview,
   ComparisonStepColumnPreview,
 } from "./preview-compositions";
 import { MainComposition, type MainCompositionProps } from "./Main";
@@ -20,6 +21,7 @@ const previewSize = { width: 1080, height: 1920 } as const;
 const previewDurationInFrames = 120;
 /** Longer preview for staggered step lists. */
 const previewDurationStepColumn = 180;
+const previewDurationComparisonSplit = 160;
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -129,6 +131,13 @@ export const RemotionRoot: React.FC = () => {
           id="PreviewComparisonStepColumn"
           component={ComparisonStepColumnPreview}
           durationInFrames={previewDurationStepColumn}
+          fps={previewFps}
+          {...previewSize}
+        />
+        <Composition
+          id="PreviewComparisonSplit"
+          component={ComparisonSplitPreview}
+          durationInFrames={previewDurationComparisonSplit}
           fps={previewFps}
           {...previewSize}
         />

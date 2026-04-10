@@ -19,7 +19,7 @@ export const LowerThird: FC<LowerThirdProps> = ({ headline, subline }) => {
   const { width, height } = useVideoConfig();
 
   const edge = Math.round(Math.max(24, width * 0.035));
-  const headlineSize = Math.round(Math.max(26, Math.min(44, width * 0.038)));
+  const headlineSize = Math.round(Math.max(32, Math.min(52, width * 0.046)));
   const sublineSize = Math.round(headlineSize * 0.48);
 
   const introEnd = 16;
