@@ -9,6 +9,8 @@ import {
 export type QuoteOverlayProps = {
   quote: string;
   attribution?: string;
+  /** Where the quote block sits vertically inside the frame. */
+  verticalAlign?: "center" | "bottom";
 };
 
 const fontStack =
@@ -17,6 +19,7 @@ const fontStack =
 export const QuoteOverlay: FC<QuoteOverlayProps> = ({
   quote,
   attribution,
+  verticalAlign = "center",
 }) => {
   const frame = useCurrentFrame();
   const { width } = useVideoConfig();
@@ -37,10 +40,11 @@ export const QuoteOverlay: FC<QuoteOverlayProps> = ({
     <AbsoluteFill
       style={{
         display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
+        justifyContent: "flex-end",
+        alignItems: verticalAlign === "bottom" ? "flex-end" : "center",
         padding: pad,
         fontFamily: fontStack,
+        marginBottom: Math.round(pad * 0.15),
         background:
           "radial-gradient(circle at 50% 40%, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.65) 100%)",
         opacity,

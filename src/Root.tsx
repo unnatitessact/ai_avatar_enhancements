@@ -6,9 +6,11 @@ import {
   LowerThirdPreview,
   ProcessChecklistPreview,
   QuoteOverlayPreview,
+  RibbonBannerPreview,
   TitleCardPreview,
   StackedTextOverlayPreview,
   WordLevelTranscriptPreview,
+  DynamicGraphPreview,
 } from "./preview-compositions";
 import { MainComposition, type MainCompositionProps } from "./Main";
 
@@ -39,9 +41,7 @@ export const RemotionRoot: React.FC = () => {
           } satisfies MainCompositionProps
         }
         calculateMetadata={({ props }) => ({
-          durationInFrames: props.videoDetails.duration * 30,
-          width: props.videoDetails.width,
-          height: props.videoDetails.height,
+          durationInFrames: Math.round(props.videoDetails.duration * 30),
         })}
       />
       <Folder name="Preview">
@@ -62,6 +62,13 @@ export const RemotionRoot: React.FC = () => {
         <Composition
           id="PreviewBannerStrip"
           component={BannerStripPreview}
+          durationInFrames={previewDurationInFrames}
+          fps={previewFps}
+          {...previewSize}
+        />
+        <Composition
+          id="PreviewRibbonBanner"
+          component={RibbonBannerPreview}
           durationInFrames={previewDurationInFrames}
           fps={previewFps}
           {...previewSize}
@@ -104,6 +111,13 @@ export const RemotionRoot: React.FC = () => {
         <Composition
           id="PreviewWordLevelTranscript"
           component={WordLevelTranscriptPreview}
+          durationInFrames={previewDurationInFrames}
+          fps={previewFps}
+          {...previewSize}
+        />
+        <Composition
+          id="PreviewDynamicGraph"
+          component={DynamicGraphPreview}
           durationInFrames={previewDurationInFrames}
           fps={previewFps}
           {...previewSize}

@@ -1,10 +1,12 @@
 export { BannerStripPreview } from "./BannerStripPreview";
+export { DynamicGraphPreview } from "./DynamicGraphPreview";
 export { BookingCtaPreview } from "./BookingCtaPreview";
 export { HeadlineFadePreview } from "./HeadlineFadePreview";
 export { ProcessChecklistPreview } from "./ProcessChecklistPreview";
 export { LowerThirdPreview } from "./LowerThirdPreview";
 export { PreviewBackground } from "./PreviewBackground";
 export { QuoteOverlayPreview } from "./QuoteOverlayPreview";
+export { RibbonBannerPreview } from "./RibbonBannerPreview";
 export { TitleCardPreview } from "./TitleCardPreview";
 export { StackedTextOverlayPreview } from "./StackedTextOverlayPreview";
 export { WordLevelTranscriptPreview } from "./WordLevelTranscriptPreview";

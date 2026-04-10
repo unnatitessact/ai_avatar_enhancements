@@ -1,5 +1,6 @@
 import { createElement, type ReactNode } from "react";
 import { BannerStrip } from "./enhancements/BannerStrip";
+import { RibbonBanner } from "./enhancements/RibbonBanner";
 import { LowerThird } from "./enhancements/LowerThird";
 import { QuoteOverlay } from "./enhancements/QuoteOverlay";
 import { TitleCard } from "./enhancements/TitleCard";
@@ -14,6 +15,34 @@ import {
 } from "./enhancements/ProcessChecklist";
 import { StackedTextOverlay } from "./enhancements/StackedTextOverlay";
 import { WordLevelTranscript } from "./enhancements/WordLevelTranscript";
+import { DynamicGraph } from "./enhancements/DynamicGraph";
+
+function parseDynamicGraphValues(raw: unknown): number[] {
+  if (!Array.isArray(raw)) {
+    return [];
+  }
+  return raw
+    .map((item) => {
+      if (typeof item === "number" && Number.isFinite(item)) {
+        return item;
+      }
+      if (item && typeof item === "object" && "value" in item) {
+        const n = Number((item as { value: unknown }).value);
+        return Number.isFinite(n) ? n : Number.NaN;
+      }
+      const n = Number(item);
+      return Number.isFinite(n) ? n : Number.NaN;
+    })
+    .filter((n) => Number.isFinite(n));
+}
+
+function parseDynamicGraphLabels(raw: unknown): string[] | undefined {
+  if (!Array.isArray(raw)) {
+    return undefined;
+  }
+  const labels = raw.map((l) => String(l ?? ""));
+  return labels.length > 0 ? labels : undefined;
+}
 
 /** Maps `enhancementId` → component, with JSON `props` normalized per enhancement. */
 export type EnhancementRenderer = (
@@ -44,6 +73,10 @@ export const enhancementRegistry: Record<string, EnhancementRenderer> = {
             ? "bottom"
             : undefined,
     }),
+  RibbonBanner: (props) =>
+    createElement(RibbonBanner, {
+      text: String(props.text ?? ""),
+    }),
   QuoteOverlay: (props) =>
     createElement(QuoteOverlay, {
       quote: String(props.quote ?? ""),
@@ -51,6 +84,8 @@ export const enhancementRegistry: Record<string, EnhancementRenderer> = {
         props.attribution !== undefined
           ? String(props.attribution)
           : undefined,
+      verticalAlign:
+        props.verticalAlign === "bottom" ? "bottom" : undefined,
     }),
   StackedTextOverlay: (props) => {
     const fromArray = Array.isArray(props.lines)
@@ -111,6 +146,22 @@ export const enhancementRegistry: Record<string, EnhancementRenderer> = {
           : undefined,
       fadeFrames:
         typeof props.fadeFrames === "number" ? props.fadeFrames : undefined,
+    }),
+  DynamicGraph: (props) =>
+    createElement(DynamicGraph, {
+      title: props.title !== undefined ? String(props.title) : undefined,
+      values: parseDynamicGraphValues(
+        props.values ?? props.series ?? props.data,
+      ),
+      labels: parseDynamicGraphLabels(props.labels),
+      lineColor:
+        props.lineColor !== undefined ? String(props.lineColor) : undefined,
+      accentColor:
+        props.accentColor !== undefined
+          ? String(props.accentColor)
+          : undefined,
+      drawFrames:
+        typeof props.drawFrames === "number" ? props.drawFrames : undefined,
     }),
   WordLevelTranscript: (props) =>
     createElement(WordLevelTranscript, {

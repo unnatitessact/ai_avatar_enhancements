@@ -61,16 +61,7 @@ export const LowerThird: FC<LowerThirdProps> = ({ headline, subline }) => {
               "0 18px 48px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.06)",
           }}
         >
-          <div
-            style={{
-              height: 3,
-              width: Math.min(160, width * 0.18),
-              marginBottom: Math.round(headlineSize * 0.22),
-              borderRadius: 2,
-              background:
-                "linear-gradient(90deg, rgba(251,191,36,0.95) 0%, rgba(251,191,36,0.2) 100%)",
-            }}
-          />
+          
           <div
             style={{
               margin: 0,

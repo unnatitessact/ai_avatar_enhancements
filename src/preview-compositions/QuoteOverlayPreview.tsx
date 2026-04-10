@@ -7,6 +7,7 @@ export const QuoteOverlayPreview: FC = () => (
   <AbsoluteFill>
     <PreviewBackground />
     <QuoteOverlay
+      verticalAlign="bottom"
       quote="Clarity beats cleverness every time your audience is deciding whether to stay."
       attribution="Pat Smith"
     />
