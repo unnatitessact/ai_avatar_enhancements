@@ -11,9 +11,6 @@ export type RibbonBannerProps = {
   text: string;
 };
 
-const PINK_BOTTOM = "#f2b1bc";
-const PINK_TOP = "#f9c7cf";
-
 const fontStack =
   "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif";
 
@@ -52,7 +49,7 @@ export const RibbonBanner: FC<RibbonBannerProps> = ({ text }) => {
 
   const padY = Math.round(Math.max(12, width * 0.014));
   const padX = Math.round(Math.max(28, width * 0.06));
-  const fontSize = Math.round(Math.max(18, Math.min(36, width * 0.028)));
+  const fontSize = Math.round(Math.max(18, Math.min(64, width * 0.048)));
   const lineThickness = Math.max(1, Math.round(width * 0.001));
 
   return (
@@ -63,7 +60,7 @@ export const RibbonBanner: FC<RibbonBannerProps> = ({ text }) => {
         display: "flex",
         alignItems: "center",
         justifyContent: "flex-end",
-        paddingBottom: Math.round(padY * 4.5),
+        paddingBottom: Math.round(padY * 6.5),
       }}
     >
       <div
@@ -87,7 +84,7 @@ export const RibbonBanner: FC<RibbonBannerProps> = ({ text }) => {
             style={{
               height: lineThickness,
               width: `${lineProgress * 100}%`,
-              backgroundColor: PINK_BOTTOM,
+              backgroundColor: "black",
             }}
           />
         </div>
@@ -101,8 +98,8 @@ export const RibbonBanner: FC<RibbonBannerProps> = ({ text }) => {
           <div
             style={{
               padding: `${padY}px ${padX}px`,
-              background: `linear-gradient(to top, ${PINK_BOTTOM}, ${PINK_TOP})`,
-              border: "1px solid #ffffff",
+              background: `black`,
+              border: "1px solid black",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -112,10 +109,11 @@ export const RibbonBanner: FC<RibbonBannerProps> = ({ text }) => {
               style={{
                 fontSize,
                 fontWeight: 700,
-                color: "#ffffff",
+                color: "white",
                 textTransform: "uppercase",
                 letterSpacing: "0.04em",
                 whiteSpace: "nowrap",
+                
               }}
             >
               {text}
@@ -135,7 +133,7 @@ export const RibbonBanner: FC<RibbonBannerProps> = ({ text }) => {
             style={{
               height: lineThickness,
               width: `${lineProgress * 100}%`,
-              backgroundColor: PINK_BOTTOM,
+              backgroundColor: "black",
             }}
           />
         </div>

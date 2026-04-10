@@ -1,6 +1,7 @@
 export { BannerStripPreview } from "./BannerStripPreview";
 export { DynamicGraphPreview } from "./DynamicGraphPreview";
 export { BookingCtaPreview } from "./BookingCtaPreview";
+export { ComparisonStepColumnPreview } from "./ComparisonStepColumnPreview";
 export { HeadlineFadePreview } from "./HeadlineFadePreview";
 export { ProcessChecklistPreview } from "./ProcessChecklistPreview";
 export { LowerThirdPreview } from "./LowerThirdPreview";

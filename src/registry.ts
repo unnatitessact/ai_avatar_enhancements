@@ -16,6 +16,10 @@ import {
 import { StackedTextOverlay } from "./enhancements/StackedTextOverlay";
 import { WordLevelTranscript } from "./enhancements/WordLevelTranscript";
 import { DynamicGraph } from "./enhancements/DynamicGraph";
+import {
+  ComparisonStepColumn,
+  parseComparisonStepColumnItems,
+} from "./enhancements/ComparisonStepColumn";
 
 function parseDynamicGraphValues(raw: unknown): number[] {
   if (!Array.isArray(raw)) {
@@ -146,6 +150,22 @@ export const enhancementRegistry: Record<string, EnhancementRenderer> = {
           : undefined,
       fadeFrames:
         typeof props.fadeFrames === "number" ? props.fadeFrames : undefined,
+    }),
+  ComparisonStepColumn: (props) =>
+    createElement(ComparisonStepColumn, {
+      items: parseComparisonStepColumnItems(props.items),
+      staggerFrames:
+        typeof props.staggerFrames === "number"
+          ? props.staggerFrames
+          : undefined,
+      fadeFrames:
+        typeof props.fadeFrames === "number" ? props.fadeFrames : undefined,
+      textColor:
+        props.textColor !== undefined ? String(props.textColor) : undefined,
+      subtitleColor:
+        props.subtitleColor !== undefined
+          ? String(props.subtitleColor)
+          : undefined,
     }),
   DynamicGraph: (props) =>
     createElement(DynamicGraph, {
