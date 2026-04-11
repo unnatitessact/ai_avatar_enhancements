@@ -1,20 +1,271 @@
 {
   "enhancements": [
     {
-      "enhancementId": "TitleCard",
-      "description": "Full-frame centered card with a headline and optional supporting line over a dimmed backdrop.",
-      "whenToUse": "Use when introducing a segment, chapter, or the overall topic of the video.",
+      "enhancementId": "BannerStrip",
+      "description": "Full-width horizontal banner with a main message and optional small label; can be pinned to the top or bottom edge.",
+      "whenToUse": "Use for announcements, CTAs, episode labels, or short updates that should read like a news ticker or promo strip.",
       "props": [
         {
           "type": "string",
-          "name": "title",
-          "description": "Primary headline shown on the card.",
+          "name": "text",
+          "description": "Main banner copy.",
           "required": true
         },
         {
           "type": "string",
+          "name": "label",
+          "description": "Small uppercase kicker above the main text (for example \"Update\" or \"New\").",
+          "required": false
+        },
+        {
+          "type": "string",
+          "name": "position",
+          "description": "Edge to attach the strip: \"top\" or \"bottom\". Omit for default bottom placement.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "enhancementId": "BookingCta",
+      "description": "Bold stacked headline lines, optional subtitle, and a CTA-style pill on a solid color field; lines animate in sequence.",
+      "whenToUse": "Use for booking prompts, signup URLs, or strong end-of-segment calls to action.",
+      "props": [
+        {
+          "type": "array",
+          "name": "headlineLines",
+          "description": "Array of strings; each string is one headline line (shown uppercase in the design).",
+          "required": false
+        },
+        {
+          "type": "string",
+          "name": "line1",
+          "description": "Legacy single headline line (use with line2, line3 if not using headlineLines).",
+          "required": false
+        },
+        {
+          "type": "string",
+          "name": "line2",
+          "description": "Legacy second headline line.",
+          "required": false
+        },
+        {
+          "type": "string",
+          "name": "line3",
+          "description": "Legacy third headline line.",
+          "required": false
+        },
+        {
+          "type": "string",
           "name": "subtitle",
-          "description": "Secondary line below the title for context or a short tagline.",
+          "description": "Supporting line below the headline stack.",
+          "required": false
+        },
+        {
+          "type": "string",
+          "name": "ctaText",
+          "description": "Label inside the CTA pill (for example a URL). Alias: ctaLabel.",
+          "required": false
+        },
+        {
+          "type": "string",
+          "name": "backgroundColor",
+          "description": "Primary panel and accent color (default blue).",
+          "required": false
+        },
+        {
+          "type": "number",
+          "name": "staggerFrames",
+          "description": "Frames between each headline line, subtitle, and button animation start.",
+          "required": false
+        },
+        {
+          "type": "number",
+          "name": "fadeFrames",
+          "description": "Fade and slide duration per step.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "enhancementId": "ComparisonSplit",
+      "description": "Two-column comparison with a vertical divider: titles and bullet rows on the left vs right, row-aligned, staggered animation.",
+      "whenToUse": "Use to contrast two options, before/after, or traditional vs alternative in a structured list.",
+      "props": [
+        {
+          "type": "string",
+          "name": "leftTitle",
+          "description": "Uppercase-style title above the left column.",
+          "required": false
+        },
+        {
+          "type": "string",
+          "name": "rightTitle",
+          "description": "Title above the right column.",
+          "required": false
+        },
+        {
+          "type": "array",
+          "name": "leftPoints",
+          "description": "Left column bullet strings, or objects with text/label/point. Alias: left.",
+          "required": false
+        },
+        {
+          "type": "array",
+          "name": "rightPoints",
+          "description": "Right column bullet strings, or objects with text/label/point. Alias: right.",
+          "required": false
+        },
+        {
+          "type": "number",
+          "name": "dividerFrames",
+          "description": "Frames for the center line to grow in.",
+          "required": false
+        },
+        {
+          "type": "number",
+          "name": "staggerFrames",
+          "description": "Frames between each comparison row animation start.",
+          "required": false
+        },
+        {
+          "type": "number",
+          "name": "fadeFrames",
+          "description": "Frames per row fade and slide.",
+          "required": false
+        },
+        {
+          "type": "string",
+          "name": "backgroundColor",
+          "description": "Background fill behind the layout.",
+          "required": false
+        },
+        {
+          "type": "string",
+          "name": "dividerColor",
+          "description": "Center divider line color.",
+          "required": false
+        },
+        {
+          "type": "string",
+          "name": "leftAccentColor",
+          "description": "Left title and bullet accent color.",
+          "required": false
+        },
+        {
+          "type": "string",
+          "name": "rightAccentColor",
+          "description": "Right title and bullet accent color.",
+          "required": false
+        },
+        {
+          "type": "string",
+          "name": "textColor",
+          "description": "Body text color for bullet lines.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "enhancementId": "ComparisonStepColumn",
+      "description": "Vertical list of rounded cards on a green gradient, connected by a center timeline line; items reveal one after another.",
+      "whenToUse": "Use for comparison-table row labels, step lists, or category columns in an EV/finance-style layout.",
+      "props": [
+        {
+          "type": "array",
+          "name": "items",
+          "description": "Array of strings, or objects with title and optional subtitle (for example metrics with \"(5 years)\").",
+          "required": false
+        },
+        {
+          "type": "number",
+          "name": "staggerFrames",
+          "description": "Frames between each card’s animation start.",
+          "required": false
+        },
+        {
+          "type": "number",
+          "name": "fadeFrames",
+          "description": "Frames for each card’s fade and motion.",
+          "required": false
+        },
+        {
+          "type": "string",
+          "name": "textColor",
+          "description": "Primary title color inside cards.",
+          "required": false
+        },
+        {
+          "type": "string",
+          "name": "subtitleColor",
+          "description": "Secondary line color under the title.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "enhancementId": "DynamicGraph",
+      "description": "Full-frame bar chart with optional title and labels; bars grow in with staggered animation.",
+      "whenToUse": "Use to visualize a small set of numeric values (scores, counts, comparisons) over categories.",
+      "props": [
+        {
+          "type": "string",
+          "name": "title",
+          "description": "Optional chart title above the plot.",
+          "required": false
+        },
+        {
+          "type": "array",
+          "name": "values",
+          "description": "Numeric series for bar heights; largest value scales to full plot height. Aliases: series, data. Entries may be numbers or objects with a value field. If empty or omitted, a built-in demo series is used.",
+          "required": false
+        },
+        {
+          "type": "array",
+          "name": "labels",
+          "description": "Optional string labels per bar (aligned by index; shorter lists are padded).",
+          "required": false
+        },
+        {
+          "type": "string",
+          "name": "lineColor",
+          "description": "Bar fill color (name kept for JSON backward compatibility).",
+          "required": false
+        },
+        {
+          "type": "string",
+          "name": "accentColor",
+          "description": "Secondary accent (for example track or glow).",
+          "required": false
+        },
+        {
+          "type": "number",
+          "name": "drawFrames",
+          "description": "Frames for each bar’s grow animation after its stagger.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "enhancementId": "HeadlineFade",
+      "description": "Single large headline with a fade-in and an accent rule underneath.",
+      "whenToUse": "Use for chapter titles, section intros, or one-line emphasis on a calm background.",
+      "props": [
+        {
+          "type": "string",
+          "name": "title",
+          "description": "Headline text to display.",
+          "required": true
+        },
+        {
+          "type": "string",
+          "name": "accentColor",
+          "description": "Color of the decorative line under the title.",
+          "required": false
+        },
+        {
+          "type": "number",
+          "name": "fadeInFrames",
+          "description": "Duration of the opacity fade-in in frames.",
           "required": false
         }
       ]
@@ -39,26 +290,32 @@
       ]
     },
     {
-      "enhancementId": "BannerStrip",
-      "description": "Full-width horizontal banner with a main message and optional small label; can be pinned to the top or bottom edge.",
-      "whenToUse": "Use for announcements, CTAs, episode labels, or short updates that should read like a news ticker or promo strip.",
+      "enhancementId": "ProcessChecklist",
+      "description": "Titled checklist with icon boxes in a column, vertical connector, and staggered row reveals.",
+      "whenToUse": "Use for process steps, service breakdowns, or ordered workflows.",
       "props": [
         {
           "type": "string",
-          "name": "text",
-          "description": "Main banner copy.",
-          "required": true
-        },
-        {
-          "type": "string",
-          "name": "label",
-          "description": "Small uppercase kicker above the main text (for example “Update” or “New”).",
+          "name": "title",
+          "description": "Uppercase section title above the list.",
           "required": false
         },
         {
-          "type": "string",
-          "name": "position",
-          "description": "Edge to attach the strip: \"top\" or \"bottom\". Omit or use \"bottom\" for the default bottom placement.",
+          "type": "array",
+          "name": "items",
+          "description": "Array of strings, or objects with label and optional icon (graduation, clipboard, edit, envelope).",
+          "required": false
+        },
+        {
+          "type": "number",
+          "name": "staggerFrames",
+          "description": "Frames between each row’s animation start after the header.",
+          "required": false
+        },
+        {
+          "type": "number",
+          "name": "fadeFrames",
+          "description": "Frames for each row’s fade and slide.",
           "required": false
         }
       ]
@@ -79,6 +336,99 @@
           "name": "attribution",
           "description": "Who said it (name, role, or source line).",
           "required": false
+        },
+        {
+          "type": "string",
+          "name": "verticalAlign",
+          "description": "Set to \"bottom\" to anchor the block lower in the frame; omit for default placement.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "enhancementId": "RibbonBanner",
+      "description": "End-aligned ribbon label with horizontal rules that grow in from the sides toward the box.",
+      "whenToUse": "Use for short uppercase callouts, segment tags, or labels that sit on a horizontal band.",
+      "props": [
+        {
+          "type": "string",
+          "name": "text",
+          "description": "Ribbon text (shown uppercase).",
+          "required": true
+        }
+      ]
+    },
+    {
+      "enhancementId": "StackedTextOverlay",
+      "description": "Italic stacked lines on a soft dimmed backdrop; each line fades and reveals in sequence.",
+      "whenToUse": "Use for poetic multi-line copy, chapter poetry, or layered statements.",
+      "props": [
+        {
+          "type": "array",
+          "name": "lines",
+          "description": "Array of lines to show from top to bottom. Preferred over line1–line5.",
+          "required": false
+        },
+        {
+          "type": "string",
+          "name": "line1",
+          "description": "First line if lines array is not provided.",
+          "required": false
+        },
+        {
+          "type": "string",
+          "name": "line2",
+          "description": "Second line.",
+          "required": false
+        },
+        {
+          "type": "string",
+          "name": "line3",
+          "description": "Third line.",
+          "required": false
+        },
+        {
+          "type": "string",
+          "name": "line4",
+          "description": "Fourth line.",
+          "required": false
+        },
+        {
+          "type": "string",
+          "name": "line5",
+          "description": "Fifth line.",
+          "required": false
+        },
+        {
+          "type": "number",
+          "name": "staggerFrames",
+          "description": "Frames between each line’s animation start.",
+          "required": false
+        },
+        {
+          "type": "number",
+          "name": "fadeFrames",
+          "description": "Frames for each line’s fade and reveal.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "enhancementId": "TitleCard",
+      "description": "Full-frame centered card with a headline and optional supporting line over a dimmed backdrop.",
+      "whenToUse": "Use when introducing a segment, chapter, or the overall topic of the video.",
+      "props": [
+        {
+          "type": "string",
+          "name": "title",
+          "description": "Primary headline shown on the card.",
+          "required": true
+        },
+        {
+          "type": "string",
+          "name": "subtitle",
+          "description": "Secondary line below the title for context or a short tagline.",
+          "required": false
         }
       ]
     },
@@ -90,7 +440,7 @@
         {
           "type": "object",
           "name": "transcript",
-          "description": "Word-level transcript JSON. Accepts either an array of tokens or an object with `word_level_transcript`.",
+          "description": "Word-level transcript: array of tokens, or pass wordLevelTranscript, or an object containing word_level_transcript.",
           "required": true
         },
         {
@@ -113,8 +463,20 @@
         },
         {
           "type": "string",
+          "name": "textColor",
+          "description": "Color for words in the current caption page.",
+          "required": false
+        },
+        {
+          "type": "string",
+          "name": "inactiveTextColor",
+          "description": "Color for words not yet spoken on the current page.",
+          "required": false
+        },
+        {
+          "type": "string",
           "name": "position",
-          "description": "Caption block position: `bottom` or `center`.",
+          "description": "Caption block position: \"bottom\" or \"center\".",
           "required": false
         }
       ]
